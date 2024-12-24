@@ -20,6 +20,8 @@ vim.opt.relativenumber = true
 
 -- default tabstop and shiftwidth
 vim.opt.tabstop = 4
+vim.opt.expandtab = true
+vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 
 -- Enable mouse mode, can be useful for resizing splits for example!
@@ -105,11 +107,11 @@ vim.keymap.set('v', '>', '>gv')
 vim.keymap.set('v', '<', '<gv')
 
 -- Automatically close parenthesis
-vim.keymap.set('i', '(', '()<Left>', { noremap = true })
-vim.keymap.set('i', '{', '{}<Left>', { noremap = true })
-vim.keymap.set('i', '[', '[]<Left>', { noremap = true })
-vim.keymap.set('i', "'", "''<Left>", { noremap = true })
-vim.keymap.set('i', '"', '""<Left>', { noremap = true })
+-- vim.keymap.set('i', '(', '()<Left>', { noremap = true })
+-- vim.keymap.set('i', '{', '{}<Left>', { noremap = true })
+-- vim.keymap.set('i', '[', '[]<Left>', { noremap = true })
+-- vim.keymap.set('i', "'", "''<Left>", { noremap = true })
+-- vim.keymap.set('i', '"', '""<Left>', { noremap = true })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -590,7 +592,7 @@ require('lazy').setup({
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true }
+        local disable_filetypes = { cpp = true, cuda = true } -- c = true, cpp = true, ...
         return {
           timeout_ms = 500,
           lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
@@ -817,7 +819,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
-  -- require 'kickstart.plugins.autopairs',
+  require 'kickstart.plugins.autopairs',
   -- require 'kickstart.plugins.neo-tree',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
